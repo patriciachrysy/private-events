@@ -3,9 +3,8 @@ class UsersController < ApplicationController
 
   def user_already_signed_in
     unless session[:current_user].nil?
-      @user = User.find_by(username: session[:current_user])
       flash[:notice] = "Already signed in, sign out if you want to reconnect as another user"
-      redirect_to user_path @user
+      redirect_to root_path
       return false
     end
   end
@@ -17,7 +16,9 @@ class UsersController < ApplicationController
   def create
     @user = User.create(sign_up_params)
     if @user.save
-      redirect_to user_path @user
+      session[:current_user] = @user.username
+      session[:current_user_id] = @user.id
+      redirect_to root_path
     else
       flash[:notice] = "This username is already taken, choose another one"
       render :new
@@ -26,6 +27,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @upcoming_events =  @user.attended_events.upcoming
+    @previous_events =  @user.attended_events.previous
   end
 
   def sign_in
@@ -33,7 +36,8 @@ class UsersController < ApplicationController
       @user = User.find_by(username: params[:username])
       unless @user.nil?
         session[:current_user] = @user.username
-        redirect_to user_path @user
+        session[:current_user_id] = @user.id
+        redirect_to root_path
       else
         flash[:notice] = "Incorrect username, please try again"
         redirect_to sign_in_path
@@ -44,7 +48,8 @@ class UsersController < ApplicationController
   def sign_out
     unless session[:current_user].nil?
       session[:current_user] = nil
-      redirect_to sign_in_path
+      session[:current_user_id] = nil
+      redirect_to root_path
     else
       flash[:notice] = "No user signed in"
       redirect_to sign_in_path

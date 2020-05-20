@@ -13,8 +13,16 @@
     <% if flash[:notice] %>
       <p class="notice"><%= notice %></p>
     <% end %>
+    
+    <h1> <%= link_to 'PRIVATE EVENTS', root_path %></h1>
+
     <% if session[:current_user] %>
-      <p class="notice"><%= session[:current_user] %></p>
+      <p ><%= session[:current_user] %></p>
+      <%= link_to 'My profile', controller: "users", action: "show", id: session[:current_user_id] %>
+      <%= link_to 'Sign Out', sign_out_path %>
+    <% else %>
+      <%= link_to 'Sign Up', sign_up_path %>
+      <%= link_to 'Sign In', sign_in_path %>
     <% end %>
     <%= yield %>
   </body>

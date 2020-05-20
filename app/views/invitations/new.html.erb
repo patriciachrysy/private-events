@@ -1,0 +1,15 @@
+<h1>Invite some people to <%= @event.name %></h1>
+
+<% @users.each do |user| %>
+    <% if user.id != session[:current_user_id] %>
+        <p>
+            <strong><%= user.username %></strong><br>
+            <% if user.invited_events.none?{|event| event.id==@event.id} %>
+                <%= link_to 'Invite', controller: "invitations", action: 'create', user_id: user.id, event_id: @event.id %>
+            <% else %>
+                <small>Invited</small>
+            <% end %>
+        <p>
+    <% end %>
+<% end %>
+

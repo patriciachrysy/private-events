@@ -7,3 +7,12 @@
     <% end %>
 </ul>
 
+<h2> Invited </h2>
+<ul>
+    <% @event.guests.each do |guest| %>
+        <li><strong><%= guest.username %></strong></li>
+    <% end %>
+</ul>
+
+<%= link_to 'Invite people', controller: "invitations", action: "new", event_id: @event.id %>
+

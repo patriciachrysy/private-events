@@ -31,6 +31,15 @@ class EventsController < ApplicationController
 
   def index
     @events = Event.all
+    @upcoming_events = @events.upcoming
+    @previous_events = @events.previous
+    @user = User.find_by(username: params[:username])
+  end
+
+  def attend_event
+    @user = User.find_by(username: session[:current_user])
+    @attendance = @user.attendances.build(params[:event_id])
+    redirect_to :show
   end
 
   private

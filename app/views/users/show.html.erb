@@ -8,3 +8,21 @@
 <% @user.created_events.each do |event| %>
   <%= render event %>
 <% end %>
+
+<h3> Upcoming events </h3>
+<% @upcoming_events.each do |event| %>
+  <%= render event %>
+<% end %>
+
+<h3> Previous events </h3>
+<% @previous_events.each do |event| %>
+  <%= render event %>
+<% end %>
+
+<h3> Invited to attend </h3>
+<% @user.invited_events.each do |event| %>
+  <% if @user.attended_events.none?{|e| e.id== event.id}%>
+    <%= render event %>
+    <%= link_to 'Accept invitation', controller: "events", action: "attend_event", event_id: event.id%>
+  <% end %>
+<% end %>

@@ -1,7 +1,15 @@
 <h1>All Events</h1>
+<% if session[:current_user] %>
+  <%= link_to 'create an event', new_event_path %>
+<% end %>
+<h3> Upcoming events </h3>
+<% @upcoming_events.each do |event| %>
+  <%= render event %>
+<% end %>
 
-<% @events.each do |event| %>
-  <%= render event%>
+<h3> Previous events </h3>
+<% @previous_events.each do |event| %>
+  <%= render event %>
 <% end %>
 
 
