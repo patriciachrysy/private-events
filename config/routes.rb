@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  resources :users, only: [:new, :create, :show]
+  resources :events, except: %i[edit update destroy]
+  resources :users, only: %i[new create show]
   get '/sign_in' => 'users#sign_in'
   post '/sign_in' => 'users#sign_in'
   get '/sign_up' => 'users#new'
