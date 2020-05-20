@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :user_already_signed_in, except: [:sign_out, :show]
+  before_action :user_already_signed_in, except: %i[sign_out show]
 
   def user_already_signed_in
     unless session[:current_user].nil?

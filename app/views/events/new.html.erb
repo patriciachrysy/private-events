@@ -1,2 +1,19 @@
-<h1>Events#new</h1>
-<p>Find me in app/views/events/new.html.erb</p>
+<h1>Create an event</h1>
+
+<%= form_with(model: @event, local: true) do |form| %>
+  
+  <%= form.label :name, hidden: true  %>
+  <%= form.text_field :name, placeholder: :name, class: "form-control" %>
+
+  <%= form.label :description, hidden: true %>
+  <%= form.text_area :description, placeholder: :event_description, class: "form-control" %>
+
+  <%= form.label :event_date, hidden: true %>
+  <%= form.datetime_field :event_date, class: "form-control" %>
+
+  <%= form.label :location, hidden: true %>
+  <%= form.text_field :location, placeholder: :event_location, class: "form-control" %>
+
+  <%= form.submit "Create Event"%>
+<% end %>
+
