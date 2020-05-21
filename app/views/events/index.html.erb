@@ -1,6 +1,15 @@
 <h1>All Events</h1>
 <% if session[:current_user] %>
   <%= link_to 'create an event', new_event_path %>
+
+  <h3> Invited to attend </h3>
+  <% @user.invited_events.each do |event| %>
+    <% if @user.attended_events.none?{|e| e.id== event.id}%>
+      <%= render event %>
+      <%= link_to 'Accept invitation', controller: "events", action: "attend_event", event_id: event.id %>
+    <% end %>
+  <% end %>
+  
 <% end %>
 <h3> Upcoming events </h3>
 <% @upcoming_events.each do |event| %>

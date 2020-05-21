@@ -34,13 +34,15 @@ class EventsController < ApplicationController
     @events = Event.all
     @upcoming_events = @events.upcoming
     @previous_events = @events.previous
-    @user = User.find_by(username: params[:username])
+    @user = User.find_by(username: session[:current_user])
   end
 
   def attend_event
     @user = User.find_by(username: session[:current_user])
-    @attendance = @user.attendances.build(params[:event_id])
-    redirect_to :show
+    @event = Event.find_by(id: params[:event_id])
+    @attendance = @user.attendances.build(attended_event: @event)
+    @attendance.save
+    redirect_to root_path
   end
 
   private
