@@ -5,7 +5,7 @@
 
 <h2>Your events</h2>
 
-<% @user.created_events.each do |event| %>
+<% @user.created_events.reverse.each do |event| %>
   <%= render event %>
 <% end %>
 
