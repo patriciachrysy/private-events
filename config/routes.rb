@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get '/sign_up' => 'users#new'
   get '/sign_out' => 'users#sign_out'
   root 'events#index'
-  get '/events/accept_invitation/:event_id' => 'event#attend_event'
+  get '/accept_invitation/:event_id' => 'events#attend_event'
   get '/invitation/:event_id' => 'invitations#new'
   get '/invite/:user_id/:event_id' => 'invitations#create'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
