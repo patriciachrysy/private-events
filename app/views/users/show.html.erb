@@ -23,6 +23,6 @@
 <% @user.invited_events.each do |event| %>
   <% if @user.attended_events.none?{|e| e.id== event.id}%>
     <%= render event %>
-    <%= link_to 'Accept invitation', controller: "events", action: "attend_event", event_id: event.id%>
+    <%= link_to 'Accept invitation', controller: "events", action: "attend_event", event_id: event.id %>
   <% end %>
 <% end %>

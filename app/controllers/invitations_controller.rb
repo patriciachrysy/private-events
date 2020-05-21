@@ -8,7 +8,7 @@ class InvitationsController < ApplicationController
     @event = Event.find(invitations_params[:event_id])
     @invitation = @event.invitations.build(guest_id: invitations_params[:user_id])
     if @invitation.save
-      redirect_to :action => "new", :event_id => @event.id
+      redirect_to event_path @event
     else
       flash[:notice] = 'This user could not be invited'
       redirect_to invitation_path @event
