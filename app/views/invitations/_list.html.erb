@@ -1,15 +1,17 @@
-<h1>Invite some people to <%= @event.name %></h1>
+<h5 class="font-weight-bold text-right">Invite people to <%= @event.name %></h5>
 
-<% @users.each do |user| %>
-    <% if user.id != session[:current_user_id] %>
-        <p>
-            <strong><%= user.username %></strong><br>
+<ul class="user-list text-right">
+    <% @users.each do |user| %>
+        <% if user.id != session[:current_user_id] %>
             <% if user.invited_events.none?{|event| event.id==@event.id} %>
-                <%= link_to 'Invite', controller: "invitations", action: 'create', user_id: user.id, event_id: @event.id %>
-            <% else %>
-                <small>Invited</small>
+                <li>
+                    <i class="fa fa-user-plus"></i>
+                    <strong><%= user.name %></strong><br>
+                    <%= link_to 'invite', controller: "invitations", action: 'create', user_id: user.id, event_id: @event.id %>
+                    
+                </li>
             <% end %>
-        <p>
+        <% end %>
     <% end %>
-<% end %>
+</ul>
 

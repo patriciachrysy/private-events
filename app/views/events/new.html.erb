@@ -1,19 +1,30 @@
-<h1>Create an event</h1>
+<h1 class="m-3 w-100 font-weight-bold text-white">Create an event</h1>
 
-<%= form_with(model: @event, local: true) do |form| %>
-  
-  <%= form.label :name, hidden: true  %>
-  <%= form.text_field :name, placeholder: :name, class: "form-control" %>
+<div class="col-md-9">
+  <%= form_with(model: @event, local: true) do |form| %>
+    <div class="field form-group">
+      <%= form.label :name, hidden: true  %>
+      <%= form.text_field :name, placeholder: :name, class: "form-control" %>
+    </div>
 
-  <%= form.label :description, hidden: true %>
-  <%= form.text_area :description, placeholder: :event_description, class: "form-control" %>
+    <div class="field form-group">
+      <%= form.label :description, hidden: true %>
+      <%= form.text_area :description, placeholder: :event_description, class: "form-control" %>
+    </div>
 
-  <%= form.label :event_date, hidden: true %>
-  <%= form.datetime_field :event_date, class: "form-control" %>
+    <div class="field form-group">
+      <%= form.label :event_date, hidden: true %>
+      <%= form.datetime_field :event_date, class: "form-control" %>
+    </div>
 
-  <%= form.label :location, hidden: true %>
-  <%= form.text_field :location, placeholder: :event_location, class: "form-control" %>
+    <div class="field form-group">
+      <%= form.label :location, hidden: true %>
+      <%= form.text_field :location, placeholder: :event_location, class: "form-control" %>
+    </div>
 
-  <%= form.submit "Create Event"%>
-<% end %>
+    <div class="field form-group">
+      <%= form.submit "Create Event", class: "btn btn-primary"%>
+    </div>
+  <% end %>
+</div>
 

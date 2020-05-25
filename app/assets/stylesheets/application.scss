@@ -16,3 +16,54 @@
 body {
   font-family: 'Roboto Condensed', sans-serif;
 }
+
+.my-p {
+  font-size: 20px;
+}
+
+.background{
+  background: url('background.png') no-repeat;
+  background-size: cover;
+}
+
+ul {
+  list-style: none;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+ul li {
+  padding: 20px 0;
+  font-weight: bolder;
+  color: white;
+  padding-left: 30px;
+}
+
+.body-box{
+  background-color: rgba(14, 3, 3, 0.9);
+  border-radius: 15px
+}
+
+.round-border{
+  border-radius: 0 300px 300px 0;
+}
+
+.user-list li{
+  padding: 15px 0;
+  font-weight: bolder;
+  font-size: 17px;
+}
+
+.round-border-right{
+  border-radius: 300px 0 0 300px ;
+}
+
+.logo {
+  font-family: 'Monoton', cursive;
+  font-size: 60px;
+}
+
+.hide {
+  overflow: hidden;
+}
+
