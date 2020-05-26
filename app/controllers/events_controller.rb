@@ -20,7 +20,8 @@ class EventsController < ApplicationController
     if @event.save
       redirect_to event_path @event
     else
-      flash[:notice] = "Unable to create event. Check whether you inputed all fields"
+      flash[:notice] = "Unable to create event. 
+                        Check whether you inputed all fields"
       render :new
     end
   end
@@ -32,9 +33,12 @@ class EventsController < ApplicationController
 
   def index
     @events = Event.all
+    @user = User.find_by(username: session[:current_user])
+    @pending_events = @events.map do |event|
+      event if  @user && @user.pending_events?(event)
+    end 
     @upcoming_events = @events.upcoming
     @previous_events = @events.previous
-    @user = User.find_by(username: session[:current_user])
   end
 
   def attend_event

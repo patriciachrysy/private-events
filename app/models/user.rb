@@ -7,4 +7,9 @@ class User < ApplicationRecord
     has_many :invitations, foreign_key: 'guest_id'
     has_many :invited_events, through: :invitations, source: :invited_event
     
+    def pending_events?(event)
+        invited_events.include?(event) &&
+        !attended_events.include?(event)
+
+    end
 end
