@@ -34,7 +34,9 @@ class EventsController < ApplicationController
   def index
     @events = Event.all
     @user = User.find_by(username: session[:current_user])
-    @pending_events = @events.map {|event| event if @user.pending_events?(event)}.compact if @user
+    @pending_events = @events.map do |event|
+      event if  @user && @user.pending_events?(event)
+    end 
     @upcoming_events = @events.upcoming
     @previous_events = @events.previous
   end

@@ -3,16 +3,7 @@
 
     <ul class="user-list text-right">
         <% @users.each do |user| %>
-            <% if user.id != session[:current_user_id] %>
-                <% if user.invited_events.none?{|event| event.id==@event.id} && @event.creator.id != user.id %>
-                    <li>
-                        <i class="fa fa-user-plus"></i>
-                        <strong><%= user.name %></strong><br>
-                        <%= link_to 'invite', controller: "invitations", action: 'create', user_id: user.id, event_id: @event.id %>
-                        
-                    </li>
-                <% end %>
-            <% end %>
+            <%= invite(user, @event) %>
         <% end %>
     </ul>
 </div>
