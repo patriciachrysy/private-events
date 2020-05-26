@@ -20,7 +20,7 @@ module EventsHelper
     if pending_events.any?
       pending_events.each do |event| 
         
-          render 'event'
+          render '/events/event', locals: {event: event}
 
           link_to 'Accept invitation', 
           {controller: "events", 

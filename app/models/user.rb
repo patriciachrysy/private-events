@@ -10,6 +10,5 @@ class User < ApplicationRecord
     def pending_events?(event)
         invited_events.include?(event) &&
         !attended_events.include?(event)
-
     end
 end

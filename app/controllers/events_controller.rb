@@ -35,7 +35,7 @@ class EventsController < ApplicationController
     @events = Event.all
     @user = User.find_by(username: session[:current_user])
     @pending_events = @events.map do |event|
-      event if  @user && @user.pending_events?(event)
+      event if  @user.pending_events?(event)
     end 
     @upcoming_events = @events.upcoming
     @previous_events = @events.previous
