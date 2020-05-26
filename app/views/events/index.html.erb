@@ -26,7 +26,11 @@
       <h3 class="w-100 text-white text-center font-weight-bolder my-4"> 
         Pending Invitations
       </h3>
-      <%= pending_events(@pending_events) %>
+      <% @pending_events.each do |event| %>
+        <div class="col-3 card p-3 m-1 border-success shadow rounded-lg">
+          <%= pending_event(event) %>
+        </div>
+      <% end %>
     </div>
   <% end %>
 

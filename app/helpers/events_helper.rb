@@ -16,18 +16,9 @@ module EventsHelper
     session[:current_user_id] == @event.creator_id
   end
 
-  def pending_events(pending_events)
-    if pending_events.any?
-      pending_events.each do |event| 
-        
-          render '/events/event', locals: {event: event}
-
-          link_to 'Accept invitation', 
-          {controller: "events", 
-           action: "attend_event", 
-           event_id: event.id}, 
-           class: "btn btn-success" 
-      end 
+  def pending_event(event)
+    if session[:current_user_id]
+      render partial: '/events/event', locals: {event: event, invite: true}
     end 
   end
 end

@@ -1,4 +1,4 @@
-
+  <% invite ||= false %>
   <h3 class="card-title text-center">
     <%= link_to event.name, {controller: "events", action: "show", id: event.id} %>
   </h3>
@@ -11,3 +11,6 @@
       <%= event.event_date %>
     </small>
   </div>
+  <% if invite %>
+    <%= link_to 'Accept invitation', {controller: 'events', action: 'attend_event', event_id: event.id}, class: 'btn btn-success'%>
+  <% end %>
