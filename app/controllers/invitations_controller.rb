@@ -15,10 +15,9 @@ class InvitationsController < ApplicationController
     end
   end
 
-  private 
+  private
 
   def invitations_params
     params.permit(:event_id, :user_id)
   end
-
 end

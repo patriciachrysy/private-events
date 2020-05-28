@@ -1,4 +1,4 @@
-# Members-Only
+# Private Events
 
 > This is part of the Association Project in [The Odin Project's](https://www.theodinproject.com) Ruby on Rails Curriculum.
 

@@ -1,9 +1,7 @@
 module EventsHelper
-
-
   def invite_guests
     if session[:current_user] &&
-      (am_invited? || my_event?)
+       (am_invited? || my_event?)
       render '/invitations/list'
     end
   end
@@ -17,8 +15,6 @@ module EventsHelper
   end
 
   def pending_event(event)
-    if session[:current_user_id]
-      render partial: '/events/event', locals: {event: event, invite: true}
-    end 
+    render partial: '/events/event', locals: { event: event, invite: true } if session[:current_user_id]
   end
 end

@@ -2,16 +2,15 @@ class EventsController < ApplicationController
   before_action :user_signed_in, only: %i[new create]
 
   def user_signed_in
-    if session[:current_user].nil?
-      flash[:notice] = "You need to sign in before creating an event"
-      redirect_to sign_in_path 
-      return false
-    end
+    return unless session[:current_user].nil?
+
+    flash[:notice] = 'You need to sign in before creating an event'
+    redirect_to sign_in_path
+    false
   end
-  
+
   def new
     @event = Event.new
-
   end
 
   def create
@@ -20,7 +19,7 @@ class EventsController < ApplicationController
     if @event.save
       redirect_to event_path @event
     else
-      flash[:notice] = "Unable to create event. 
+      flash[:notice] = "Unable to create event.
                         Check whether you inputed all fields"
       render :new
     end
@@ -34,7 +33,7 @@ class EventsController < ApplicationController
   def index
     @events = Event.all
     @user = User.find_by(username: session[:current_user])
-    @pending_events = @events.map {|event| event if  @user && @user.pending_events?(event)}.compact
+    @pending_events = @events.map { |event| event if @user&.pending_events?(event) }.compact
     @upcoming_events = @events.upcoming
     @previous_events = @events.previous
   end
