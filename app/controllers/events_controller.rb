@@ -28,6 +28,8 @@ class EventsController < ApplicationController
   def show
     @users = User.all
     @event = Event.find(params[:id])
+    @guests = @event.guests.count
+    @invitees = @event.attendees.count
   end
 
   def index
