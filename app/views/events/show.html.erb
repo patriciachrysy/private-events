@@ -1,0 +1,45 @@
+<div class="row">
+    <div class="col-8 text-white">
+        <h1 class="m-3 w-100 font-weight-bold text-white"><%= @event.name%></h1>
+
+        <p class="m-3 my-p"><%= @event.description%></p>
+
+        <p class="m-3 my-p"><strong class="text-success text-underline">Takes place on the: </strong><span><%= @event.event_date%></span></p>
+
+        <p class="m-3 my-p"><strong class="text-success text-underline">Takes place at: </strong><span><%= @event.location%></span></p>
+
+        <div class="row p-5">
+
+            <div class="col-5 mr-2 d-flex flex-column shadow border border-primary rounded bg-white">
+                <h4 class="text-primary"> Invited(<%= @event.guests.count %>) </h4>
+                <% if session[:current_user_id] %>
+                    <ul class="user-list">
+                        <% @event.guests.each do |guest| %>
+                            <li class="text-primary">
+                                <i class="fa fa-user"></i>
+                                <strong><%= guest.name %></strong>
+                            </li>
+                        <% end %>
+                    </ul>
+                <% end %>
+            </div>
+
+            <div class="col-5 d-flex flex-column shadow border border-success rounded bg-white">
+                <h4 class="text-success"> Attendees(<%= @event.attendees.count %>) </h4>
+                <% if session[:current_user_id] %>
+                    <ul class="user-list">
+                        <% @event.attendees.each do |attendee| %>
+                            <li class="text-success">
+                                <i class="fa fa-house-user"></i>
+                                <strong><%= attendee.name %></strong>
+                            </li>
+                        <% end %>
+                    </ul>
+                <% end %>
+            </div>
+        </div>
+    </div>
+    
+    <%= invite_guests %> 
+</div>
+

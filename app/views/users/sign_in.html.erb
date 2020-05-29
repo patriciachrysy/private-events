@@ -1,0 +1,15 @@
+<h1 class="m-3 w-100 font-weight-bold text-white"> Sign In </h1>
+
+<div class="col-md-6">
+    <%= form_with(url: '/sign_in') do |f| %>
+        <div class="field form-group">
+            <%= f.label :username, class: "text-primary font-weight-bold" %>
+            <%= f.text_field :username, class: "form-control border-primary" %>
+        </div>
+
+        <div class="field form-group">
+            <%= f.submit 'OK', class: "btn btn-primary" %>
+        </div>
+
+    <% end %>
+</div>

@@ -1,0 +1,26 @@
+<h1 class="m-3 w-100 font-weight-bold text-white">Sign Up</h1>
+
+<div class="col-md-6">
+    <%= form_with(model: @user, local: true) do |f| %>
+        <div class="field form-group">
+            <%= f.label :name, class: "text-primary font-weight-bold" %>
+            <%= f.text_field :name, class: "form-control border-primary" %>
+        </div>
+
+        <div class="field form-group">
+            <%= f.label :username, class: "text-primary font-weight-bold" %>
+            <%= f.text_field :username, class: "form-control border-primary" %>
+        </div>
+
+        <div class="field form-group">
+            <%= f.label :email, class: "text-primary font-weight-bold" %>
+            <%= f.email_field :email, class: "form-control border-primary" %>
+        </div>
+
+        <div class="actions form-group">
+            <%= f.submit 'OK', class: "btn btn-primary" %>
+        </div>
+
+    <% end %>
+</div>
+

@@ -1,0 +1,8 @@
+<li>
+    <i class="fa fa-user-plus"></i>
+    <strong><%= user.name %></strong><br>
+    <%= link_to 'invite', controller: "invitations",  
+                          action: 'create', 
+                          user_id: user.id, 
+                          event_id: @event.id %>
+</li>
