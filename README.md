@@ -1,6 +1,6 @@
 # Private Events
 
-> This is part of the Association Project in [The Odin Project's](https://www.theodinproject.com) Ruby on Rails Curriculum.
+> This is part of the Association Project in [The Odin Project's](https://www.theodinproject.com) Ruby on Rails Curriculum. The project consist of a website where you can publish events and invite people to attend. Each person you invte can also invite other people to attend. Only invited people can attend, invite and view the guest and attendees lists. Enjoy!!!
 
 ![screenshot](./app_screenshot.png)
 
