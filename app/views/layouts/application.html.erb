@@ -4,12 +4,46 @@
     <title>PrivateEvents</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
+    <!-- Font awesone icons -->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
+
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="background">
+    <div class="m-5 body-box hide">
+      <% if flash[:notice] %>
+        <p class="notice"><%= notice %></p>
+      <% end %>
+      <div class="row justify-content-center py-5">
+        <h1> <%= link_to 'PRIVATE-EVENTS', root_path, class: "text-success w-100 logo" %></h1>
+      </div>
+      <div class="row">
+        <div class="col-3 d-flex flex-column pt-5 bg-primary border-success round-border">
+          <ul>
+          <li></li>
+          <% if session[:current_user] %>
+            <li class= "font-weight-bolder text-white text-uppercase" ><h4>Welcome <%= session[:current_user]%></h4></li>
+            <li><%= link_to 'My profile', {controller: "users", action: "show", id: session[:current_user_id]}, class: "text-white" %></li>
+            <li><%= link_to 'create an event', new_event_path, class: "text-white" %></li>
+            <li><%= link_to 'Sign Out', sign_out_path, class: "text-white" %></li>
+          <% else %>
+            <li><%= link_to 'Sign Up', sign_up_path, class: "text-white" %></li>
+            <li><%= link_to 'Sign In', sign_in_path, class: "text-white" %></li>
+
+          <% end %>
+          </ul>
+        </div> 
+        <div class="col-9 m-auto pl-5">
+          <%= yield %>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

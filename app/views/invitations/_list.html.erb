@@ -1,0 +1,9 @@
+<div class="col-4 d-flex flex-column bg-success text-white round-border-right justify-content-center px-5"> 
+    <h5 class="font-weight-bold text-right">Invite people to <%= @event.name %></h5>
+
+    <ul class="user-list text-right">
+        <% @users.each do |user| %>
+            <%= invite(user, @event) %>
+        <% end %>
+    </ul>
+</div>

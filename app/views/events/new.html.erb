@@ -1,0 +1,30 @@
+<h1 class="m-3 w-100 font-weight-bold text-white">Create an event</h1>
+
+<div class="col-md-9">
+  <%= form_with(model: @event, local: true) do |form| %>
+    <div class="field form-group">
+      <%= form.label :name, class: "text-primary font-weight-bold"  %>
+      <%= form.text_field :name, placeholder: :name, class: "form-control" %>
+    </div>
+
+    <div class="field form-group">
+      <%= form.label :description, class: "text-primary font-weight-bold" %>
+      <%= form.text_area :description, placeholder: :event_description, class: "form-control" %>
+    </div>
+
+    <div class="field form-group">
+      <%= form.label :event_date, class: "text-primary font-weight-bold" %>
+      <%= form.datetime_field :event_date, class: "form-control" %>
+    </div>
+
+    <div class="field form-group">
+      <%= form.label :location, class: "text-primary font-weight-bold" %>
+      <%= form.text_field :location, placeholder: :event_location, class: "form-control" %>
+    </div>
+
+    <div class="field form-group">
+      <%= form.submit "Create Event", class: "btn btn-primary"%>
+    </div>
+  <% end %>
+</div>
+

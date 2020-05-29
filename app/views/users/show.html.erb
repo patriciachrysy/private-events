@@ -1,0 +1,33 @@
+
+  <h1 class="w-100 font-weight-bolder text-center my-4 text-white" >Your Infos</h1>
+  <p><strong class="text-primary">Name:</strong> <span class="text-white"><%= @user.name%></span></p>
+  <p><strong class="text-primary">Username:</strong> <span class="text-white"><%= @user.username%></span></p>
+  <p><strong class="text-primary">Email:</strong> <span class="text-white"><%= @user.email%></span></p>
+
+
+<div class="row">
+  <h2 class="w-100 font-weight-bolder text-center my-4 text-white"> Your events </h2>
+  <% @user.created_events.reverse.each do |event| %>
+    <div class="col-3 card p-3 m-1 border-success shadow rounded-lg">
+      <%= render event %>
+    </div>
+  <% end %>
+</div>
+
+<div class="row">
+  <h3 class="w-100 font-weight-bolder text-center my-4 text-white"> Upcoming events </h3>
+  <% @upcoming_events.each do |event| %>
+    <div class="col-3 card p-3 m-1 border-success shadow rounded-lg">
+      <%= render event %>
+    </div>
+  <% end %>
+</div>
+
+<div class="row">
+  <h3 class="w-100 font-weight-bolder text-center my-4 text-white"> Previous events </h3>
+  <% @previous_events.each do |event| %>
+    <div class="col-3 card p-3 m-1 border-success shadow rounded-lg">
+      <%= render event %>
+    </div>
+  <% end %>
+</div>

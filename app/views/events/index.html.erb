@@ -1,0 +1,36 @@
+
+  <div class="row">
+    <h3 class="w-100 font-weight-bolder text-center my-4 text-white"> 
+      Upcoming events 
+    </h3>
+    <% @upcoming_events.each do |event| %>
+      <div class="col-3 card p-3 m-1 border-success shadow rounded-lg">
+        <%= render event %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="row">
+    <h3 class="w-100 font-weight-bolder text-center my-4 text-white"> 
+      Previous events
+    </h3>
+    <% @previous_events.each do |event| %>
+      <div class="col-3 card p-3 m-1 border-success shadow rounded-lg">
+        <%= render event %>
+      </div>
+    <% end %>
+  </div>
+
+  <% if session[:current_user] %>
+    <div class="row">
+      <h3 class="w-100 text-white text-center font-weight-bolder my-4"> 
+        Pending Invitations
+      </h3>
+      <% @pending_events.each do |event| %>
+        <div class="col-3 card p-3 m-1 border-success shadow rounded-lg">
+          <%= pending_event(event) %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+
